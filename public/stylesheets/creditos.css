@@ -1,0 +1,74 @@
+.clear {clear: both;}
+
+p {
+    font-size: 1em;
+    line-height: 1.4em;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+#cv {
+    width: 90%;
+    max-width: 800px;
+    background: #f3f3f3;
+    margin: 30px auto;
+}
+
+.mainDetails {
+    background: #ededed;
+}
+
+#name h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+    margin-bottom: -6px;
+}
+
+#name h2 {
+    font-size: 1.4em;
+    margin-left: 2px;
+    font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+}
+
+#headshot {
+    width: 12.5%;
+    float: left;
+    margin-right: 30px;
+}
+
+#headshot img {
+    width: 100%;
+    height: auto;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+#name {
+    float: left;
+}
+
+#contactDetails {
+    float: right;
+}
+
+#contactDetails ul {
+    list-style-type: none;
+    font-size: 0.9em;
+    margin-top: 2px;
+}
+
+#contactDetails ul li {
+    margin-bottom: 3px;
+    color: #444;
+}
+
+#contactDetails ul li a, a[href^=tel] {
+    color: #444;
+    text-decoration: none;
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    -ms-transition: all .3s ease-in;
+    transition: all .3s ease-in;
+}
