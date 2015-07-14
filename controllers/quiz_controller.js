@@ -1,19 +1,34 @@
 var models = require('../models/models.js');
 
-// GET /quizes/question
+//GET /quizes
+exports.index = function(req, res){
+    models.Quiz.findAll().then(function(quizes){
+       res.render("quizes/index", {quizes: quizes});
+    });
+}
+
+// GET /quizes/:id
 exports.question = function (req, res) {
-    models.Quiz.findAll().then(function (quiz) {
-        res.render('quizes/question', {pregunta: quiz[0].pregunta});
+    models.Quiz.findById(req.params.quizId).then(function (quiz) {
+        res.render('quizes/question', {quiz: quiz});
     });
 };
 
-// GET /quizes/answer
+// GET /quizes/:id/answer
 exports.answer = function (req, res) {
-    models.Quiz.findAll().then(function (quiz) {
-        if (req.query.respuesta === quiz[0].respuesta) {
-            res.render('quizes/answer', {respuesta: 'Correcto'});
+    models.Quiz.findById(req.params.quizId).then(function (quiz) {
+        if (req.query.respuesta === quiz.respuesta) {
+            res.render('quizes/answer',
+                {
+                    quiz: quiz,
+                    respuesta: 'Correcto'
+                });
         } else {
-            res.render('quizes/answer', {respuesta: 'Incorrecto'});
+            res.render('quizes/answer',
+                {
+                    quiz: quiz,
+                    respuesta: 'Incorrecto'
+                });
         }
     });
 };
