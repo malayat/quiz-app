@@ -5,9 +5,12 @@ var quizController = require('../controllers/quiz_controller');
 var creditosController = require('../controllers/creditos_controller');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz' });
 });
+
+//Autoload de comandos con :quizId
+router.param('quizId', quizController.load);
 
 //Definicion de las rutas de /quizes
 router.get('/quizes', quizController.index);
