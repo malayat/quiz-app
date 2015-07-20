@@ -1,6 +1,14 @@
+<form method="get" action="/quizes">
+    Busqueda:
+    <input type="text" name="search"/>
+    <input type="submit" value="Enviar"/>
+</form>
 <table>
     <% var i; for(i=0; i< quizes.length; i++) {%>
     <tr>
+        <td>
+            <img src="<%= quizes[i].url_bandera %>"/>
+        </td>
         <td>
             <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
         </td>

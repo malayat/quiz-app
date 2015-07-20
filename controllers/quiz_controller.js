@@ -16,11 +16,25 @@ exports.load = function (req, rex, next, quizId) {
 
 //GET /quizes
 exports.index = function (req, res) {
-    models.Quiz.findAll().then(function (quizes) {
-        res.render("quizes/index", {quizes: quizes});
-    }).catch(function (error) {
-        next(error);
-    });
+
+    var busqueda = (req.query.search || '');
+    busqueda = busqueda.replace(/\s/g, '%');
+
+    //usando la ultima version de sequelize la busqueda like
+    //cambia a lo indicado en el curso
+    models.Quiz.findAll({
+            where: {
+                pregunta: {
+                    $like: '%' + busqueda + '%'
+                }
+            }
+        }
+    ).then(function (quizes) {
+            res.render("quizes/index", {quizes: quizes});
+        }).catch(function (error) {
+            next(error);
+        });
+
 };
 
 // GET /quizes/:id
