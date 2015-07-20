@@ -49,15 +49,28 @@ sequelize.sync().then(function () {
                 [
                     {
                         pregunta: 'Capital de Italia',
-                        respuesta: 'Roma'
+                        respuesta: 'Roma',
+                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/20px-Flag_of_Italy.svg.png'
                     },
                     {
                         pregunta: 'Capital de Portugal',
-                        respuesta: 'Lisboa'
+                        respuesta: 'Lisboa',
+                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/20px-Flag_of_Portugal.svg.png'
                     },
                     {
                         pregunta: 'Capital de Ecuador',
-                        respuesta: 'Quito'
+                        respuesta: 'Quito',
+                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/20px-Flag_of_Ecuador.svg.png'
+                    },
+                    {
+                        pregunta: 'Capital de Yibuti',
+                        respuesta: 'Yibuti',
+                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Flag_of_Djibouti.svg/20px-Flag_of_Djibouti.svg.png'
+                    },
+                    {
+                        pregunta: 'Capital de Baréin',
+                        respuesta: 'Manama',
+                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Bahrain.svg/20px-Flag_of_Bahrain.svg.png'
                     }
                 ]
             ).then(function () {
