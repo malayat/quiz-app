@@ -56,3 +56,24 @@ exports.answer = function (req, res) {
             respuesta: resultado
         });
 };
+
+//GET /quizes/new
+exports.new = function (req, res) {
+    var quiz = models.Quiz.build({
+        pregunta: "Pregunta",
+        respuesta: "Respuesta",
+        url_bandera: "URL Bandera"
+    });
+    res.render('quizes/new', {quiz: quiz});
+};
+
+//POST /quizes/create
+exports.create = function (req, res) {
+    console.log("==========> create");
+    var quiz = models.Quiz.build(req.body.quiz);
+
+    //Guarda en la DB los campos pregunta y respuesta de quiz
+    quiz.save({fields:['pregunta', 'respuesta', 'url_bandera']}).then(function () {
+        res.redirect('../quizes');
+    })
+};

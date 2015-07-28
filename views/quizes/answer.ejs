@@ -1,8 +1,8 @@
 <p>
     <%= respuesta %><br><br>
-    <% if (respuesta === 'Incorrecto') {%>
+    <% if (respuesta === 'Incorrecto') { %>
     <a href="/quizes/<%= quiz.id %>">Volver a intentar</a>
-    <% } else {%>
+    <% } else { %>
     <a href="/quizes">Otra Pregunta</a>
     <% } %>
 </p>
