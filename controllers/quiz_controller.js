@@ -134,8 +134,13 @@ exports.update = function(req, res) {
     req.quiz
         .validate().then(function (err) {
             if (err) {
+                var options = ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"];
+                var index = options.indexOf(req.quiz.tema);
+                options.splice(index, 1);
+
                 res.render('quizes/edit', {
                     quiz: req.quiz,
+                    options: options,
                     errors: err.errors
                 });
             } else {
