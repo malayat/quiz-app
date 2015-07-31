@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
         {
             pregunta: {
                 type: DataTypes.STRING,
+                allowNull: false,
                 validate: {
                     notEmpty: {
                         msg: '*Falta Pregunta'
@@ -16,23 +17,22 @@ module.exports = function (sequelize, DataTypes) {
             },
             respuesta: {
                 type: DataTypes.STRING,
+                allowNull: false,
                 validate: {
                     notEmpty: {
                         msg: '* Falta Respuesta'
                     }
                 }
             },
-            url_bandera: {
+            tema: {
                 type: DataTypes.STRING,
+                allowNull: false,
                 validate: {
                     notEmpty: {
-                        msg: '* Falta URL Bandera'
-                    },
-                    isUrl: {
-                        msg: '* No es una URL Válida'
+                        msg: '* Falta Tema'
                     }
                 }
             }
         }
     );
-}
+};

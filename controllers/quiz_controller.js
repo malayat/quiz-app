@@ -69,7 +69,9 @@ exports.new = function (req, res) {
     var quiz = models.Quiz.build({
         pregunta: "Pregunta",
         respuesta: "Respuesta",
-        url_bandera: "URL Bandera"
+        tema: {
+            options : ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"]
+        }
     });
     res.render('quizes/new', {
         quiz: quiz,
@@ -79,12 +81,19 @@ exports.new = function (req, res) {
 
 //POST /quizes/create
 exports.create = function (req, res) {
+
     var quiz = models.Quiz.build(req.body.quiz);
 
     //Guarda en la DB los campos pregunta y respuesta de quiz
     quiz
         .validate().then(function (err) {
             if (err) {
+                quiz = models.Quiz.build({
+                    pregunta: req.body.quiz.pregunta,
+                    respuesta: req.body.quiz.respuesta,
+                    tema: {
+                        options : ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"]
+                    }});
                 res.render('quizes/new', {
                     quiz: quiz,
                     errors: err.errors
@@ -92,7 +101,7 @@ exports.create = function (req, res) {
             } else {
                 quiz.
                     save({
-                        fields: ['pregunta', 'respuesta', 'url_bandera']
+                        fields: ['pregunta', 'respuesta', 'tema']
                     }).then(function () {
                         res.redirect('../quizes');
                     })
@@ -102,12 +111,17 @@ exports.create = function (req, res) {
 
 //GET quizes/:id/edit
 exports.edit = function(req, res) {
+
     var quiz = req.quiz;
+    var options = ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"];
+    var index = options.indexOf(quiz.tema);
+    options.splice(index, 1);
+
     res.render('quizes/edit', {
         quiz: quiz,
+        options: options,
         errors: []
     });
-
 };
 
 //PUT /quizes/:id
@@ -115,7 +129,7 @@ exports.update = function(req, res) {
 
     req.quiz.pregunta = req.body.quiz.pregunta;
     req.quiz.respuesta = req.body.quiz.respuesta;
-    req.quiz.url_bandera = req.body.quiz.url_bandera;
+    req.quiz.tema = req.body.quiz.tema;
 
     req.quiz
         .validate().then(function (err) {
@@ -127,7 +141,7 @@ exports.update = function(req, res) {
             } else {
                 req.quiz.
                     save({
-                        fields: ['pregunta', 'respuesta', 'url_bandera']
+                        fields: ['pregunta', 'respuesta', 'tema']
                     }).then(function () {
                         res.redirect('../quizes');
                     })

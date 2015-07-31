@@ -48,29 +48,29 @@ sequelize.sync().then(function () {
             Quiz.bulkCreate(
                 [
                     {
-                        pregunta: 'Capital de Italia',
-                        respuesta: 'Roma',
-                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/20px-Flag_of_Italy.svg.png'
-                    },
-                    {
-                        pregunta: 'Capital de Portugal',
-                        respuesta: 'Lisboa',
-                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Portugal.svg/20px-Flag_of_Portugal.svg.png'
-                    },
-                    {
                         pregunta: 'Capital de Ecuador',
                         respuesta: 'Quito',
-                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/20px-Flag_of_Ecuador.svg.png'
+                        tema: 'Geografía'
                     },
                     {
-                        pregunta: 'Capital de Yibuti',
-                        respuesta: 'Yibuti',
-                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Flag_of_Djibouti.svg/20px-Flag_of_Djibouti.svg.png'
+                        pregunta: 'Quién es el autor de la Teoría de la Evolución',
+                        respuesta: 'Charles Darwin',
+                        tema: 'Ciencia'
                     },
                     {
-                        pregunta: 'Capital de Baréin',
-                        respuesta: 'Manama',
-                        url_bandera: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Bahrain.svg/20px-Flag_of_Bahrain.svg.png'
+                        pregunta: 'Quién inventó NodeJS',
+                        respuesta: 'Ryan Dahl',
+                        tema: 'Tecnología'
+                    },
+                    {
+                        pregunta: 'Quién ganó la copa del mundo Brasil 2014',
+                        respuesta: 'Alemania',
+                        tema: 'Ocio'
+                    },
+                    {
+                        pregunta: 'Quién creó Linux',
+                        respuesta: 'Linus Torvalds',
+                        tema: 'Tecnología'
                     }
                 ]
             ).then(function () {
