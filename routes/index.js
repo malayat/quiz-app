@@ -20,9 +20,10 @@ router.get('/quizes', quizController.index);
 router.get('/quizes/:quizId(\\d+)', quizController.question);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 router.get('/quizes/new', quizController.new);
+router.post('/quizes/create', quizController.create);
 router.get('/quizes/:quizId(\\d+)/edit', quizController.edit);
 router.put('/quizes/:quizId(\\d+)', quizController.update);
-router.post('/quizes/create', quizController.create);
+router.delete('/quizes/:quizId(\\d+)', quizController.destroy);
 
 //Definicion de los creditos
 router.get('/author', creditosController.creditos);

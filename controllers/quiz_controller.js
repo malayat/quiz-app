@@ -70,7 +70,7 @@ exports.new = function (req, res) {
         pregunta: "Pregunta",
         respuesta: "Respuesta",
         tema: {
-            options : ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"]
+            options: ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"]
         }
     });
     res.render('quizes/new', {
@@ -92,8 +92,9 @@ exports.create = function (req, res) {
                     pregunta: req.body.quiz.pregunta,
                     respuesta: req.body.quiz.respuesta,
                     tema: {
-                        options : ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"]
-                    }});
+                        options: ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"]
+                    }
+                });
                 res.render('quizes/new', {
                     quiz: quiz,
                     errors: err.errors
@@ -110,7 +111,7 @@ exports.create = function (req, res) {
 };
 
 //GET quizes/:id/edit
-exports.edit = function(req, res) {
+exports.edit = function (req, res) {
 
     var quiz = req.quiz;
     var options = ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"];
@@ -125,7 +126,7 @@ exports.edit = function(req, res) {
 };
 
 //PUT /quizes/:id
-exports.update = function(req, res) {
+exports.update = function (req, res) {
 
     req.quiz.pregunta = req.body.quiz.pregunta;
     req.quiz.respuesta = req.body.quiz.respuesta;
@@ -152,4 +153,13 @@ exports.update = function(req, res) {
                     })
             }
         });
+};
+
+//DELETE /quizes/:id
+exports.destroy = function (req, res) {
+    req.quiz.destroy().then(function () {
+        res.redirect('../quizes');
+    }).catch(function (error) {
+        next(error);
+    })
 };
