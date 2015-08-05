@@ -1,29 +1,43 @@
-<form method="get" action="/quizes">
-    Busqueda:
-    <input type="text" name="search"/>
-    <input type="submit" value="Enviar"/>
-</form>
-<table>
-    <% var i; for(i = 0; i < quizes.length; i++) { %>
-    <tr>
-        <td>
-            <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
-        </td>
-        <td>
-            <a href="quizes/<%= quizes[i].id %>/edit">
-                <button><img src="edit.png"/></button>
-            </a>
-        </td>
-        <td>
-            <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
-                <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
-                    <img src="delete.png"/>
-                </button>
-            </form>
-        </td>
-    </tr>
-    <% } %>
-</table><br>
-<a href="quizes/new">
-    <button type="button">Crear Pregunta</button>
-</a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <form role="form" method="get" action="/quizes">
+            <div class="form-group">
+                <label for="preguntas">Búsqueda</label>
+                <input id="preguntas" class="form-control" type="text" name="search"/>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
+
+
+        </form>
+    </div>
+
+    <div class="panel-body">
+        <table>
+            <% var i; for(i = 0; i < quizes.length; i++) { %>
+            <tr>
+                <td>
+                    <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a>
+                </td>
+                <td>
+                    <a href="quizes/<%= quizes[i].id %>/edit">
+                        <button><img src="edit.png"/></button>
+                    </a>
+                </td>
+                <td>
+                    <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
+                        <button type="submit" onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+                            <img src="delete.png"/>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+        </table>
+    </div>
+    <div class="panel-footer"><a href="quizes/new">
+            <button type="button" class="btn btn-primary">Crear Pregunta</button>
+        </a></div>
+</div>
+
+
+
