@@ -1,4 +1,8 @@
-Edite la pregunta<br/>
-<form method="post" action="/quizes/<%= quiz.id %>?_method=put">
-    <% include _form.ejs %>
-</form>
+<div class="panel panel-default">
+    <div class="panel-heading">Editar Pregunta</div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" method="post" action="/quizes/<%= quiz.id %>?_method=put">
+            <% include _form.ejs %>
+        </form>
+    </div>
+</div>

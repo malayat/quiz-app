@@ -18,26 +18,41 @@ exports.load = function (req, rex, next, quizId) {
 exports.index = function (req, res) {
 
     var busqueda = (req.query.search || '');
-    busqueda = busqueda.replace(/\s/g, '%');
+    var searchTema = req.query.searchTema;
 
-    //usando la ultima version de sequelize la busqueda like
-    //cambia a lo indicado en el curso
-    models.Quiz.findAll({
-            where: {
-                pregunta: {
-                    $like: '%' + busqueda + '%'
+    if(!searchTema) {
+        busqueda = busqueda.replace(/\s/g, '%');
+
+        models.Quiz.findAll({
+                where: {
+                    pregunta: {
+                        $like: '%' + busqueda + '%'
+                    }
                 }
             }
-        }
-    ).then(function (quizes) {
-            res.render("quizes/index", {
-                quizes: quizes,
-                errors: []
+        ).then(function (quizes) {
+                res.render("quizes/index", {
+                    quizes: quizes,
+                    errors: []
+                });
+            }).catch(function (error) {
+                next(error);
             });
-        }).catch(function (error) {
-            next(error);
-        });
-
+    } else {
+            models.Quiz.findAll({
+                    where: {
+                        tema: req.query.searchTema
+                    }
+                }
+            ).then(function (quizes) {
+                    res.render("quizes/index", {
+                        quizes: quizes,
+                        errors: []
+                    });
+                }).catch(function (error) {
+                    next(error);
+                });
+    }
 };
 
 // GET /quizes/:id

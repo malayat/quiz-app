@@ -1,7 +1,17 @@
-<div>
+<div class="jumbotron">
     <h1>Bievenido a <%= title %></h1>
     <small>!El portal donde podrás crear tus propios juegos!</small>
+    <br><br><br>
+    <form role="form" method="get" action="/quizes">
+        <div class="form-group">
+            <label for="tema" class="sr-only">Búsqueda</label>
+            <select id="tema" class="form-control" name="searchTema">
+                <option selected disabled>Elija un tema</option>
+                <% for(var x in options) { %>
+                <option value="<%= options[x] %>"><%= options[x] %></option>
+                <% } %>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
 </div>
-
-
-

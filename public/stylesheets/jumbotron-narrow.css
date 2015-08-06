@@ -64,3 +64,15 @@ body {
         border-bottom: 0px none;
     }
 }
+
+#headshot {
+    width: 42.5%;
+    /*margin-right: 30px;*/
+}
+
+#headshot img {
+    width: auto;
+    height: auto;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}

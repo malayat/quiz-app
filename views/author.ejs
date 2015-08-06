@@ -1,21 +1,36 @@
-<div id="cv">
+<!--<div id="cv">
     <div class="mainDetails">
         <div id="headshot">
-            <img src="alejo.jpeg" alt="Alejandro Ayala"/>
+
         </div>
 
         <div id="name">
-            <h1><%= author%></h1>
 
-            <h2><%= profesion%></h2>
         </div>
 
         <div id="contactDetails">
-            <ul>
-                <li><a href="mailto:alejandro.ayala@solmedia.ec" target="_blank">alejandro.ayala@solmedia.ec</a></li>
-                <li><a href="http://alejandroayala.solmedia.ec">http://alejandroayala.solmedia.ec</a></li>
-                <li><%= fono%></li>
-            </ul>
+
         </div>
+    </div>
+</div>-->
+
+<div class="row">
+    <div class="col-xs-12 col-sm-3">
+        <div id="headshot">
+            <img src="alejo.jpeg" alt="Alejandro Ayala"/>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <h3><%= author%></h3>
+        <h5><%= profesion%></h5>
+    </div>
+    <div class="col-xs-12 col-sm-5">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="mailto:alejandro.ayala@solmedia.ec" target="_blank">alejandro.ayala@solmedia.ec</a>
+            </li>
+            <li class="list-group-item"><a href="http://alejandroayala.solmedia.ec">http://alejandroayala.solmedia.ec</a> <span class="glyphicon glyphicon-envelope"></span></li>
+            <li class="list-group-item"><%= fono%> <span class="glyphicon glyphicon-earphone"></span> </li>
+        </ul>
     </div>
 </div>

@@ -8,6 +8,7 @@ var creditosController = require('../controllers/creditos_controller');
 router.get('/', function (req, res) {
     res.render('index', {
         title: 'Quiz',
+        options: ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"],
         errors: []
     });
 });
