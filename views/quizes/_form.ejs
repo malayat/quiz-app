@@ -1,20 +1,44 @@
-<label for="preg" class="rem">Pregunta:</label>
-<input id="preg" type="text" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/><br>
-<label for="resp" class="rem">Respuesta:</label>
-<input id="resp" type="text" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/><br>
-<label for="tem" class="rem">Tema:</label>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="preg">Pregunta:</label>
+    <div class="col-sm-10">
+        <input id="preg" class="form-control" type="text"
+               name="quiz[pregunta]" value="<%= quiz.pregunta %>"/>
+    </div>
+</div>
 
-<select id="tem" name="quiz[tema]" value="<%= quiz.tema %>">
-    <% if(quiz.tema.options) { %>
-    <option selected disabled>Escoja una opción</option>
-    <% for(var x in quiz.tema.options) { %>
-    <option value="<%= quiz.tema.options[x] %>"><%= quiz.tema.options[x] %></option>
-    <% }} else { %>
-    <option value="<%= quiz.tema %>" selected><%= quiz.tema %></option>
-    <% for(var x in options) { %>
-    <option value="<%= options[x] %>"><%= options[x] %></option>
-    <% }} %>
-</select><br>
+<div class="form-group">
+    <label class="control-label col-sm-2" for="resp">Respuesta:</label>
+    <div class="col-sm-10">
+        <input id="resp" class="form-control" type="text"
+               name="quiz[respuesta]" value="<%= quiz.respuesta %>"/>
+    </div>
+</div>
 
-<a href="/quizes"><button type="button">Cancelar</button></a>
-<input type="submit" value="Guardar"/>
+<div class="form-group">
+    <label for="tem" class="control-label col-sm-2">Tema:</label>
+    <div class="col-sm-10">
+        <select id="tem" class="form-control" name="quiz[tema]" value="<%= quiz.tema %>">
+            <% if(quiz.tema.options) { %>
+            <option selected disabled>Escoja una opción</option>
+            <% for(var x in quiz.tema.options) { %>
+            <option value="<%= quiz.tema.options[x] %>"><%= quiz.tema.options[x] %></option>
+            <% }} else { %>
+            <option value="<%= quiz.tema %>" selected><%= quiz.tema %></option>
+            <% for(var x in options) { %>
+            <option value="<%= options[x] %>"><%= options[x] %></option>
+            <% }} %>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <a href="/quizes"><button type="button" class="btn btn-default">Cancelar</button></a>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</div>
+
+
+
+
+

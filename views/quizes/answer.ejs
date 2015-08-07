@@ -1,8 +1,13 @@
 <p>
-    <%= respuesta %><br><br>
     <% if (respuesta === 'Incorrecto') { %>
+<div class="alert alert-danger" role="alert">
+    <%= respuesta %><br><br>
     <a href="/quizes/<%= quiz.id %>">Volver a intentar</a>
-    <% } else { %>
+</div>
+<% } else { %>
+<div class="alert alert-success" role="alert">
+    <%= respuesta %><br><br>
     <a href="/quizes">Otra Pregunta</a>
-    <% } %>
+</div>
+<% } %>
 </p>

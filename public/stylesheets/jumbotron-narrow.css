@@ -1,0 +1,78 @@
+/* Effective stylesheet produced by snapshot save */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.header, .marketing, .footer {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.header h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 40px;
+}
+
+.footer {
+    padding-top: 19px;
+    color: rgb(119, 119, 119);
+    border-top: 1px solid rgb(229, 229, 229);
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.jumbotron .btn {
+    padding: 14px 24px;
+    font-size: 21px;
+}
+
+.marketing {
+    margin: 40px 0px;
+}
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+@media screen and (min-width: 768px) {
+    .header, .marketing, .footer {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .header {
+        margin-bottom: 30px;
+    }
+
+    .jumbotron {
+        border-bottom: 0px none;
+    }
+}
+
+#headshot {
+    width: 42.5%;
+    /*margin-right: 30px;*/
+}
+
+#headshot img {
+    width: auto;
+    height: auto;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
