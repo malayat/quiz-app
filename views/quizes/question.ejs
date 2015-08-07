@@ -1,8 +1,25 @@
-<form role="form" method="get" action="/quizes/<%= quiz.id %>/answer">
-    <div class="form-group">
-        <label for="pregunta"><%= quiz.pregunta %></label>
-        <input id="pregunta" type="text" name="respuesta" class="form-control"/>
-    </div>
+<div class="well well-lg">
+    <form role="form" method="get" action="/quizes/<%= quiz.id %>/answer">
+        <div class="form-group">
+            <label for="pregunta"><%= quiz.pregunta %></label>
+            <input id="pregunta" type="text" name="respuesta" class="form-control"/>
+        </div>
 
-    <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a href="/quizes/<%= quiz.id %>/comments/new">
+            <button class="btn btn-default btn-xs">Dejar un comentario</button>
+        </a>
+    </div>
+    <div class="panel-body">
+        <% for(index in quiz.Comments) { %>
+        <div class="well well-sm">
+            <p><%= quiz.Comments[index].texto %></p>
+        </div>
+        <% } %>
+    </div>
+</div>

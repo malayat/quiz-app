@@ -23,7 +23,7 @@
                 <td>
                     <a href="quizes/<%= quizes[i].id %>/edit">
                         <button type="button" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-edit"></span> Editar
+                            <span class="glyphicon glyphicon-edit"></span>
                         </button>
                     </a>
                 </td>
@@ -31,7 +31,7 @@
                     <form method="post" action="quizes/<%= quizes[i].id %>?_method=delete">
                         <button type="submit" class="btn  btn-danger btn-sm"
                                 onclick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
-                            <span class="glyphicon glyphicon-trash"></span> Eliminar
+                            <span class="glyphicon glyphicon-trash"></span>
                         </button>
                     </form>
                 </td>

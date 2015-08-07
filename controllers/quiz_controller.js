@@ -2,7 +2,12 @@ var models = require('../models/models.js');
 
 //Autoload - factoriza el codigo si ruta incluye :quizId
 exports.load = function (req, rex, next, quizId) {
-    models.Quiz.findById(quizId).then(function (quiz) {
+    models.Quiz.find({
+        where: {
+            id: quizId
+        },
+        include: [{model: models.Comment}]
+    }).then(function (quiz) {
         if (quiz) {
             req.quiz = quiz;
             next();
@@ -20,7 +25,7 @@ exports.index = function (req, res) {
     var busqueda = (req.query.search || '');
     var searchTema = req.query.searchTema;
 
-    if(!searchTema) {
+    if (!searchTema) {
         busqueda = busqueda.replace(/\s/g, '%');
 
         models.Quiz.findAll({
@@ -39,19 +44,19 @@ exports.index = function (req, res) {
                 next(error);
             });
     } else {
-            models.Quiz.findAll({
-                    where: {
-                        tema: req.query.searchTema
-                    }
+        models.Quiz.findAll({
+                where: {
+                    tema: req.query.searchTema
                 }
-            ).then(function (quizes) {
-                    res.render("quizes/index", {
-                        quizes: quizes,
-                        errors: []
-                    });
-                }).catch(function (error) {
-                    next(error);
+            }
+        ).then(function (quizes) {
+                res.render("quizes/index", {
+                    quizes: quizes,
+                    errors: []
                 });
+            }).catch(function (error) {
+                next(error);
+            });
     }
 };
 

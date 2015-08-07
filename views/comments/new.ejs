@@ -1,0 +1,15 @@
+<div class="well well-lg">
+    <form role="form" method="post" action="/quizes/<%= quizId %>/comments/">
+        <div class="form-group">
+            <textarea class="form-control" rows="3"
+                      placeholder="Deje aquí su comentario" type="text"
+                      name="comment[texto]"></textarea>
+        </div>
+        <div class="form-group">
+            <a href="/quizes/<%= quizId %>">
+                <button type="button" class="btn btn-default">Cancelar</button>
+            </a>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>
