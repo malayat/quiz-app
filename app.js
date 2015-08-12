@@ -16,37 +16,54 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-
 app.use(partials());
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(cookieParser('Quiz 2015 Alejandro Ayala'));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(cookieParser());
 app.use(methodOverride('_method'));
-app.use(session());
+app.use(session({
+    secret: 'Quiz 2015 Alejandro Ayala',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: true,
+        maxAge: 120000
+    }
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //helpers dinamicos
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
 
-  //guardar path en session.redir
-  if(!req.path.match(/\/login|\/logout/)){
-    req.session.redir = req.path;
-  }
+    //guardar path en session.redir
+    if (!req.path.match(/\/login|\/logout/)) {
+        req.session.redir = req.path;
+    }
 
-  //hacer visible req.session en las vistas
-  res.locals.session = req.session;
-  next();
+    if (!req.session.user) {
+        //si la sesion caduca se borra la ruta almacenada
+        //issue al crear la pregunta con sesion caducada
+        if(req.session.redir === '/quizes/create') {
+            req.session.redir = "/";
+        }
+    }
+
+    //hacer visible req.session en las vistas
+    res.locals.session = req.session;
+    next();
 });
 
 app.use('/', routes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -54,26 +71,25 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err,
-      errors: []
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err,
+            errors: []
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {},
-    errors: []
-  });
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {},
+        errors: []
+    });
 });
-
 
 module.exports = app;

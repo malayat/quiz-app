@@ -38,13 +38,22 @@ exports.create = function (req, res) {
         };
 
         // redirección a path anterior a login
-        res.redirect(req.session.redir.toString());
+        if(req.session.redir) {
+            res.redirect(req.session.redir.toString());
+        } else {
+            res.redirect("/");
+        }
     });
 };
 
 // DELETE /logout   -- Destruir sesion 
 exports.destroy = function (req, res) {
     delete req.session.user;
+
     // redirect a path anterior a login
-    res.redirect(req.session.redir.toString());
+    if(req.session.redir) {
+        res.redirect(req.session.redir.toString());
+    } else {
+        res.redirect("/");
+    }
 };
