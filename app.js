@@ -27,6 +27,7 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use(session({
     secret: 'Quiz 2015 Alejandro Ayala',
+    proxy: true,
     resave: false,
     saveUninitialized: false,
     cookie: {
