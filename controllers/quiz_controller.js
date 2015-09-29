@@ -101,33 +101,32 @@ exports.new = function (req, res) {
 
 //POST /quizes/create
 exports.create = function (req, res) {
-
+    req.body.quiz.UserId = req.session.user.id;
     var quiz = models.Quiz.build(req.body.quiz);
 
     //Guarda en la DB los campos pregunta y respuesta de quiz
-    quiz
-        .validate().then(function (err) {
-            if (err) {
-                quiz = models.Quiz.build({
-                    pregunta: req.body.quiz.pregunta,
-                    respuesta: req.body.quiz.respuesta,
-                    tema: {
-                        options: ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"]
-                    }
-                });
-                res.render('quizes/new', {
-                    quiz: quiz,
-                    errors: err.errors
-                });
-            } else {
-                quiz.
-                    save({
-                        fields: ['pregunta', 'respuesta', 'tema']
-                    }).then(function () {
-                        res.redirect('../quizes');
-                    })
-            }
-        });
+    quiz.validate().then(function (err) {
+        if (err) {
+            quiz = models.Quiz.build({
+                pregunta: req.body.quiz.pregunta,
+                respuesta: req.body.quiz.respuesta,
+                tema: {
+                    options: ["Geografía", "Humanidades", "Ocio", "Ciencia", "Tecnología"]
+                }
+            });
+            res.render('quizes/new', {
+                quiz: quiz,
+                errors: err.errors
+            });
+        } else {
+            quiz.
+                save({
+                    fields: ['pregunta', 'respuesta', 'tema', 'UserId']
+                }).then(function () {
+                    res.redirect('../quizes');
+                })
+        }
+    });
 };
 
 //GET quizes/:id/edit
